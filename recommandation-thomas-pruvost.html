@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lettre de recommandation - Thomas Pruvost, Tool4Staffing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12182b;
+    --ink-soft:#4a5170;
+    --muted:#767d95;
+    --paper:#f5f6fa;
+    --panel:#ffffff;
+    --accent:#1f4e8c;
+    --accent-soft:#e7edf7;
+    --line:#e2e5ee;
+    --shadow:0 10px 30px rgba(18,24,43,0.06);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    max-width:760px; margin:0 auto; padding:24px 28px 0;
+  }
+  .back-link{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:13.5px; font-weight:600; color:var(--ink-soft); text-decoration:none;
+  }
+  .back-link:hover{color:var(--accent);}
+  .print-btn{
+    min-width: 125px;
+    font-size:12.5px; font-weight:600; color:var(--ink-soft);
+    border:1px solid var(--line); background:var(--panel);
+    padding:8px 14px; border-radius:8px; cursor:pointer;
+  }
+  .print-btn:hover, .lang-btn:hover{border-color:var(--accent); color:var(--accent);}
+  .lang-btn{
+    font-size:12.5px; font-weight:600; color:var(--ink-soft);
+    border:1px solid var(--line); background:var(--panel);
+    padding:8px 14px; border-radius:8px; cursor:pointer;
+  }
+
+  .letter-wrap{max-width:760px; margin:24px auto 60px; padding:0 28px;}
+  .letter{
+    background:var(--panel); border:1px solid var(--line); border-radius:16px;
+    box-shadow:var(--shadow); padding:56px 60px;
+  }
+  .letterhead{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    padding-bottom:28px; margin-bottom:32px; border-bottom:1px solid var(--line);
+  }
+  .letterhead .company{font-family:'Sora',sans-serif; font-weight:800; font-size:20px; color:var(--accent);}
+  .letterhead .tagline{font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--muted); margin-top:4px; letter-spacing:0.4px;}
+  .letterhead .doc-label{
+    font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--muted);
+    text-align:right; line-height:1.6;
+  }
+  .subject{font-size:13.5px; font-weight:700; color:var(--ink); margin-bottom:22px;}
+  .letter p{font-size:14.5px; line-height:1.85; color:var(--ink-soft); margin:0 0 20px;}
+  .letter p.salutation{color:var(--ink); font-weight:500;}
+  .signature{margin-top:36px; font-size:14.5px; line-height:1.7;}
+  .signature .closing{color:var(--ink-soft); margin-bottom:22px;}
+  .signature .name{font-family:'Sora',sans-serif; font-weight:700; font-size:15.5px; color:var(--ink);}
+  .signature .role{color:var(--muted); font-size:13px; margin-top:2px;}
+  .signature .contacts{margin-top:10px; font-size:12.5px; color:var(--muted); font-family:'JetBrains Mono',monospace;}
+  .signature .contacts a{color:var(--accent); text-decoration:none;}
+  .signature .contacts a:hover{text-decoration:underline;}
+
+  @media print{
+    body{background:#fff;}
+    .topbar{display:none;}
+    .letter{box-shadow:none; border:none; padding:0;}
+    .letter-wrap{margin:0; padding:0; max-width:100%;}
+  }
+  @media (max-width:600px){
+    .letter{padding:34px 24px;}
+    .letterhead{flex-direction:column; gap:14px;}
+    .letterhead .doc-label{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="back-link" href="index.html">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+    <span data-i18n="back_link">Retour au portfolio</span>
+  </a>
+  <div style="display:flex; align-items:center; gap:8px;">
+    <button class="lang-btn" id="langToggle">EN</button>
+    <button class="print-btn" onclick="window.print()" data-i18n="print_btn">Imprimer / PDF</button>
+  </div>
+</div>
+
+<div class="letter-wrap">
+  <div class="letter">
+    <div class="letterhead">
+      <div>
+        <div class="company">Tool4Staffing</div>
+        <div class="tagline" data-i18n="tagline">ATS + CRM BOOSTÉ À L'IA</div>
+      </div>
+      <div class="doc-label" data-i18n="doc_label">
+        LETTRE DE RECOMMANDATION<br>
+        THOMAS PRUVOST · COO
+      </div>
+    </div>
+
+    <div class="subject" data-i18n="subject">Objet : Lettre de recommandation</div>
+    <p class="salutation" data-i18n="translation_note" style="font-size:12px; font-style:italic; color:var(--muted); margin:-10px 0 20px;"></p>
+
+    <p class="salutation" data-i18n="salutation">Madame, Monsieur,</p>
+
+    <p data-i18n="p1">
+      J'ai eu le plaisir de manager Baptiste dans le cadre de son stage au sein de
+      Tool4staffing, une startup spécialisée dans l'édition de logiciels RH, où j'occupais
+      le rôle de Product Owner.
+    </p>
+
+    <p data-i18n="p2">
+      Au cours de son expérience, Baptiste s'est particulièrement distingué par sa capacité
+      à centraliser, structurer et exploiter les feedbacks provenant aussi bien de nos équipes
+      internes que de nos utilisateurs et clients. Ce travail a été particulièrement précieux
+      dans le suivi de nos fonctionnalités récemment développées : il nous a permis de mieux
+      identifier les besoins prioritaires, de faire remonter les sujets importants et surtout
+      de maintenir une roadmap produit claire, pertinente et régulièrement mise à jour.
+    </p>
+
+    <p data-i18n="p3">
+      Baptiste possède également de solides compétences techniques, qui lui ont permis de
+      comprendre rapidement les problématiques rencontrées par les équipes produit et
+      techniques et de dialoguer efficacement avec les différents interlocuteurs. Il a su
+      faire preuve d'une réelle curiosité et d'une bonne compréhension des enjeux liés au
+      développement d'un produit logiciel.
+    </p>
+
+    <p data-i18n="p4">
+      J'ai également beaucoup apprécié son esprit d'initiative et sa capacité à être force
+      de proposition. Il ne s'est pas contenté d'exécuter les missions qui lui étaient
+      confiées : il a régulièrement proposé de nouvelles idées, identifié des opportunités
+      d'amélioration et apporté une vraie contribution à nos réflexions produit et à nos
+      démarches d'innovation.
+    </p>
+
+    <p data-i18n="p5">
+      Au-delà de ses compétences, Baptiste est une personne sérieuse, impliquée et agréable
+      avec qui travailler. Il a rapidement gagné en autonomie et a su prendre sa place au
+      sein d'une équipe évoluant dans un environnement startup exigeant et en constante
+      évolution.
+    </p>
+
+    <p data-i18n="p6">
+      Je recommande donc chaleureusement Baptiste pour un poste de Product Owner ou Product
+      Manager. Je suis convaincu qu'il saura apporter sa capacité d'analyse, sa culture
+      technique, son sens du produit et son esprit d'initiative à une nouvelle équipe.
+    </p>
+
+    <p data-i18n="p7">
+      Je reste bien entendu disponible pour tout complément d'information concernant son
+      expérience au sein de notre entreprise.
+    </p>
+
+    <div class="signature">
+      <div class="closing" data-i18n="closing">Bien cordialement,</div>
+      <div class="name">Thomas Pruvost</div>
+      <div class="role" data-i18n="sig_role">COO, Tool4Staffing</div>
+      <div class="contacts">
+        <a href="mailto:thomas@tool4staffing.com">thomas@tool4staffing.com</a> · +33 4 44 88 01 47
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  const LETTER_I18N = {"fr": {"back_link": "Retour au portfolio", "print_btn": "Imprimer / PDF", "tagline": "ATS + CRM BOOSTÉ À L'IA", "doc_label": "LETTRE DE RECOMMANDATION<br>\n        THOMAS PRUVOST · COO", "subject": "Objet : Lettre de recommandation", "salutation": "Madame, Monsieur,", "p1": "J'ai eu le plaisir de manager Baptiste dans le cadre de son stage au sein de\n      Tool4staffing, une startup spécialisée dans l'édition de logiciels RH, où j'occupais\n      le rôle de Product Owner.", "p2": "Au cours de son expérience, Baptiste s'est particulièrement distingué par sa capacité\n      à centraliser, structurer et exploiter les feedbacks provenant aussi bien de nos équipes\n      internes que de nos utilisateurs et clients. Ce travail a été particulièrement précieux\n      dans le suivi de nos fonctionnalités récemment développées : il nous a permis de mieux\n      identifier les besoins prioritaires, de faire remonter les sujets importants et surtout\n      de maintenir une roadmap produit claire, pertinente et régulièrement mise à jour.", "p3": "Baptiste possède également de solides compétences techniques, qui lui ont permis de\n      comprendre rapidement les problématiques rencontrées par les équipes produit et\n      techniques et de dialoguer efficacement avec les différents interlocuteurs. Il a su\n      faire preuve d'une réelle curiosité et d'une bonne compréhension des enjeux liés au\n      développement d'un produit logiciel.", "p4": "J'ai également beaucoup apprécié son esprit d'initiative et sa capacité à être force\n      de proposition. Il ne s'est pas contenté d'exécuter les missions qui lui étaient\n      confiées : il a régulièrement proposé de nouvelles idées, identifié des opportunités\n      d'amélioration et apporté une vraie contribution à nos réflexions produit et à nos\n      démarches d'innovation.", "p5": "Au-delà de ses compétences, Baptiste est une personne sérieuse, impliquée et agréable\n      avec qui travailler. Il a rapidement gagné en autonomie et a su prendre sa place au\n      sein d'une équipe évoluant dans un environnement startup exigeant et en constante\n      évolution.", "p6": "Je recommande donc chaleureusement Baptiste pour un poste de Product Owner ou Product\n      Manager. Je suis convaincu qu'il saura apporter sa capacité d'analyse, sa culture\n      technique, son sens du produit et son esprit d'initiative à une nouvelle équipe.", "p7": "Je reste bien entendu disponible pour tout complément d'information concernant son\n      expérience au sein de notre entreprise.", "closing": "Bien cordialement,", "sig_role": "COO, Tool4Staffing", "translation_note": ""}, "en": {"back_link": "Back to portfolio", "print_btn": "Print / PDF", "tagline": "AI-POWERED ATS + CRM", "doc_label": "RECOMMENDATION LETTER<br>\n        THOMAS PRUVOST · COO", "subject": "Subject: Letter of recommendation", "salutation": "To whom it may concern,", "p1": "I had the pleasure of managing Baptiste during his internship at\n      Tool4staffing, a startup specializing in HR software, where I held\n      the role of Product Owner.", "p2": "During his time with us, Baptiste particularly stood out for his ability\n      to centralize, structure and make use of feedback from both our internal teams\n      and our users and clients. This work proved especially valuable in tracking our\n      recently developed features: it allowed us to better identify priority needs,\n      surface important issues and, above all, maintain a clear, relevant and\n      regularly updated product roadmap.", "p3": "Baptiste also has solid technical skills, which allowed him to quickly\n      understand the issues faced by the product and technical teams and to\n      communicate effectively with various stakeholders. He showed genuine\n      curiosity and a good understanding of the challenges involved in\n      developing a software product.", "p4": "I also greatly appreciated his sense of initiative and his ability to\n      put forward proposals. He did not simply carry out the tasks assigned\n      to him: he regularly suggested new ideas, identified opportunities for\n      improvement, and made a genuine contribution to our product thinking\n      and innovation efforts.", "p5": "Beyond his skills, Baptiste is a serious, committed and pleasant person\n      to work with. He quickly gained autonomy and found his place within a\n      team operating in a demanding, constantly evolving startup environment.", "p6": "I therefore warmly recommend Baptiste for a Product Owner or Product\n      Manager position. I am confident he will bring his analytical skills,\n      technical background, product sense and initiative to a new team.", "p7": "I remain, of course, available for any further information regarding\n      his time with our company.", "closing": "Kind regards,", "sig_role": "COO, Tool4Staffing", "translation_note": "Translated from the original French letter, provided as-is for convenience."}};
+  const letterLangBtn = document.getElementById('langToggle');
+  function applyLetterLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if(LETTER_I18N[lang] && LETTER_I18N[lang][key] !== undefined){
+        el.innerHTML = LETTER_I18N[lang][key];
+      }
+    });
+    letterLangBtn.textContent = lang === 'fr' ? 'EN' : 'FR';
+  }
+  const letterSavedLang = localStorage.getItem('bb-lang') || 'fr';
+  applyLetterLang(letterSavedLang);
+  letterLangBtn.addEventListener('click', () => {
+    const current = document.documentElement.lang === 'en' ? 'en' : 'fr';
+    const next = current === 'fr' ? 'en' : 'fr';
+    localStorage.setItem('bb-lang', next);
+    applyLetterLang(next);
+  });
+</script>
+</body>
+</html>

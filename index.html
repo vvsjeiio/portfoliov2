@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baptiste Blet - Product Owner &amp; Chef de Projet Digital</title>
+<meta name="description" content="Portfolio de Baptiste Blet, Product Owner & Chef de Projet Digital. Ingénieur informatique, expérience Product Owner chez Tool4Staffing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12182b;
+    --ink-soft:#4a5170;
+    --muted:#767d95;
+    --paper:#f5f6fa;
+    --panel:#ffffff;
+    --accent:#1f4e8c;
+    --accent-2:#3d6bb0;
+    --accent-soft:#e7edf7;
+    --amber:#c98a2c;
+    --amber-soft:#f6ead3;
+  --rose:#b5406e; --rose-soft:#f6e3ec;
+  --purple:#6d4fc4; --purple-soft:#ece7f9;
+  --gray:#5b6172; --gray-soft:#e7e9ee;
+
+    --line:#e2e5ee;
+    --shadow:0 10px 30px rgba(18,24,43,0.06);
+    --radius:14px;
+    --maxw:1080px;
+  }
+  html.dark{
+    --ink:#eef1f8;
+    --ink-soft:#b7bfd6;
+    --muted:#8790ac;
+    --paper:#0c1020;
+    --panel:#131933;
+    --accent:#7fa3dd;
+    --accent-2:#9dbaea;
+    --accent-soft:rgba(127,163,221,0.12);
+    --amber:#e8b565;
+    --amber-soft:rgba(232,181,101,0.12);
+    --rose:#e08fb0; --rose-soft:rgba(224,143,176,0.14);
+    --purple:#a48ce0; --purple-soft:rgba(164,140,224,0.14);
+    --gray:#9aa1b8; --gray-soft:rgba(154,161,184,0.14);
+    --line:#242c48;
+    --shadow:0 10px 30px rgba(0,0,0,0.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    transition:background .3s ease, color .3s ease;
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  h1,h2,h3{font-family:'Sora',sans-serif; margin:0; color:var(--ink);}
+  .mono{font-family:'JetBrains Mono',monospace;}
+
+  /* ---------- ticket eyebrow (signature element) ---------- */
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;
+    font-weight:500;
+    letter-spacing:0.5px;
+    color:var(--muted);
+    margin-bottom:14px;
+  }
+  .eyebrow .chip{
+    padding:3px 9px;
+    border-radius:5px;
+    font-weight:600;
+    font-size:10.5px;
+    letter-spacing:0.6px;
+  }
+  .chip-1{background:var(--accent-soft); color:var(--accent);}
+  .chip-2{background:var(--amber-soft); color:var(--amber);}
+  .chip-3{background:var(--rose-soft); color:var(--rose);}
+  .chip-gray{background:var(--gray-soft); color:var(--gray);}
+  .chip-5{background:var(--purple-soft); color:var(--purple);}
+
+  /* ---------- nav ---------- */
+  header.nav{
+  position:sticky; top:0; z-index:50;
+  background:color-mix(in srgb, var(--paper) 35%, transparent);
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(5px);
+  border-bottom:1px solid transparent;
+  transition:border-color .25s ease;
+  }
+  header.nav.scrolled{border-bottom-color:var(--line);}
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 28px; max-width:var(--maxw); margin:0 auto;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Sora',sans-serif; font-weight:700; font-size:15px;
+    text-decoration:none;
+  }
+  .logo .mark{
+    width:32px;height:32px;border-radius:9px;
+    background:var(--ink); color:var(--paper);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600;
+    overflow:hidden;
+  }
+  .logo .mark img{width:100%;height:100%;object-fit:cover; display:block;}
+  nav.links{display:flex; align-items:center; gap:26px;}
+  nav.links a{
+    font-size:13.5px; font-weight:500; text-decoration:none; color:var(--ink-soft);
+    position:relative; padding:4px 0;
+  }
+  nav.links a.active, nav.links a:hover{color:var(--ink);}
+  nav.links a.active::after{
+    content:""; position:absolute; left:0; right:0; bottom:-4px; height:2px; background:var(--accent); border-radius:2px;
+  }
+  .nav-actions{display:flex; align-items:center; gap:12px;}
+  .theme-btn{
+    width:36px;height:36px;border-radius:50%;
+    border:1px solid var(--line); background:var(--panel);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer; color:var(--ink);
+    transition:transform .25s cubic-bezier(.34,1.56,.64,1), border-color .2s ease, background .2s ease, color .2s ease;
+  }
+  .theme-btn:hover{
+    border-color:var(--accent); color:var(--accent);
+  }
+  #themeToggle:hover svg{transform:rotate(20deg);}
+  #themeToggle svg{transition:transform .3s ease;}
+  .lang-btn{
+    font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700;
+    letter-spacing:0.3px;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:9px 16px; border-radius:9px;
+    font-size:13px; font-weight:600; text-decoration:none;
+    border:1px solid transparent; cursor:pointer;
+    font-family:'Inter',sans-serif;
+  }
+  .btn-primary{background:var(--ink); color:var(--paper);}
+  .btn-primary:hover{background:var(--accent);}
+  .nav-cv-btn{min-width:85px; justify-content:center; transition:background .2s ease, transform .15s ease;}
+  .nav-cv-btn:active{transform:scale(0.96);}
+  .btn-ghost{border-color:var(--line); color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--accent); color:var(--accent);}
+  .menu-toggle{display:none;}
+
+  /* ---------- hero ---------- */
+  section.hero{padding:64px 0 40px;}
+  .hero-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:48px; align-items:center;}
+  .hero h1{font-size:44px; font-weight:800; letter-spacing:-0.5px; line-height:1.08; margin-bottom:8px;}
+  .hero .role{
+    font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:500;
+    color:var(--accent); margin-bottom:18px; letter-spacing:0.2px;
+  }
+  .hero p.lede{font-size:15.5px; line-height:1.7; color:var(--ink-soft); max-width:52ch; margin-bottom:22px;}
+  .hero .avail{
+    display:flex; align-items:center; gap:8px;
+    font-size:12.5px; color:var(--muted); margin-bottom:26px;
+  }
+  .dot{width:7px;height:7px;border-radius:50%;background:#2fbf6a; box-shadow:0 0 0 3px rgba(47,191,106,0.18); position:relative; flex-shrink:0;}
+  .dot::after{
+    content:""; position:absolute; inset:0; border-radius:50%;
+    background:#2fbf6a; animation:pulse-dot 1.8s ease-out infinite;
+  }
+  @keyframes pulse-dot{
+    0%{ transform:scale(1); opacity:0.7; }
+    100%{ transform:scale(3.2); opacity:0; }
+  }
+  .dot.unavailable, .dot.unavailable::after{background:#e6483f;}
+  .dot.unavailable{box-shadow:0 0 0 3px rgba(230,72,63,0.18);}
+  .avail.unavailable{color:#e6483f;}
+  .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:22px;}
+  .socials{display:flex; gap:14px;}
+  .socials a, .copy-btn-icon{
+    width:38px;height:38px;border-radius:50%;
+    border:1px solid var(--line); display:flex;align-items:center;justify-content:center;
+    text-decoration:none; color:var(--ink-soft);
+  }
+  .socials a:hover, .copy-btn-icon:hover{border-color:var(--accent); color:var(--accent);}
+  .copy-btn-icon{
+    background:transparent; cursor:pointer; position:relative; font-family:inherit; padding:0;
+    transition:transform .18s ease, border-color .18s ease, color .18s ease;
+  }
+  .copy-btn-icon svg{transition:transform .25s cubic-bezier(.34,1.56,.64,1), opacity .15s ease;}
+  .copy-btn-icon.copied{border-color:#2fbf6a; color:#2fbf6a; transform:scale(1.08);}
+  .copy-btn-icon.copied svg{transform:scale(1.15);}
+  .copy-feedback{
+    position:absolute; top:calc(100% + 8px); left:50%; transform:translateX(-50%);
+    background:var(--ink); color:var(--paper); font-size:11px; font-weight:600;
+    padding:5px 10px; border-radius:6px; white-space:nowrap;
+    opacity:0; pointer-events:none; transition:opacity .2s ease;
+  }
+  .copy-feedback.show{opacity:1;}
+  .copy-row-btn{
+    display:flex; align-items:center; justify-content:center;
+    width:34px;height:34px;border-radius:8px; flex-shrink:0;
+    border:1px solid rgba(255,255,255,0.18); background:rgba(255,255,255,0.06);
+    color:#fff; cursor:pointer; position:relative;
+  }
+  html.dark .copy-row-btn{border-color:var(--line); background:var(--paper); color:var(--ink-soft);}
+  .copy-row-btn:hover{border-color:var(--accent);}
+
+  .hero-photo{position:relative; display:flex; justify-content:center;}
+  .hero-photo .frame{
+    width:280px; height:280px; border-radius:28px; overflow:hidden;
+    box-shadow:var(--shadow); position:relative;
+    border:1px solid var(--line);
+  }
+  .hero-photo img{width:100%; height:100%; object-fit:cover; display:block;}
+  .hero-photo .tag{
+    position:absolute; bottom:-16px; left:-16px;
+    background:var(--panel); border:1px solid var(--line); box-shadow:var(--shadow);
+    border-radius:11px; padding:10px 14px;
+    font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-soft);
+  }
+  .hero-photo .tag b{color:var(--ink); display:block; font-size:12.5px; font-family:'Inter',sans-serif; font-weight:600;}
+
+  /* ---------- generic section ---------- */
+  section{padding:64px 0;}
+  section.alt{background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .section-head{max-width:640px; margin-bottom:40px;}
+  .section-head h2{font-size:28px; font-weight:700; letter-spacing:-0.3px; margin-bottom:8px;}
+  .section-head p{font-size:14px; color:var(--ink-soft); line-height:1.6;}
+
+  /* ---------- skills ---------- */
+  .skill-groups{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .skill-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px;
+  }
+  .skill-card h3{font-size:14px; margin-bottom:14px; display:flex; align-items:center; gap:8px;}
+  .skill-card h3 .sw{width:8px;height:8px;border-radius:2px;background:var(--accent);}
+  .tag-cloud{display:flex; flex-wrap:wrap; gap:7px;}
+  .tag-cloud span{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px; padding:5px 10px; border-radius:6px;
+    background:var(--accent-soft); color:var(--accent); font-weight:500;
+  }
+  .skill-card.softskills .tag-cloud span{background:var(--amber-soft); color:var(--amber);}
+
+  /* ---------- experiences ---------- */
+  .featured-exp{
+    background:linear-gradient(155deg, var(--accent-soft) 0%, var(--panel) 60%);
+    border:1px solid var(--line); border-left:4px solid var(--accent);
+    border-radius:var(--radius); padding:30px 30px 26px; margin-bottom:28px;
+    box-shadow:var(--shadow);
+  }
+  .exp-top{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px; margin-bottom:6px;}
+  .exp-top .role{font-size:19px; font-weight:700; font-family:'Sora',sans-serif;}
+  .exp-top .date{font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--accent); font-weight:600; white-space:nowrap;}
+  .exp-sub{font-size:13px; color:var(--muted); margin-bottom:14px;}
+  .exp-context{font-size:13.5px; color:var(--ink-soft); line-height:1.65; margin-bottom:16px; max-width:70ch;}
+  .exp-list{margin:0; padding-left:0; list-style:none; display:grid; gap:10px;}
+  .exp-list li{
+    font-size:13.5px; line-height:1.6; color:var(--ink-soft);
+    padding-left:22px; position:relative;
+  }
+  .exp-list li::before{
+    content:"→"; position:absolute; left:0; top:0; color:var(--accent); font-weight:700;
+  }
+  .exp-list li strong{color:var(--ink);}
+  .exp-stack{margin-top:16px; font-size:11.5px; font-family:'JetBrains Mono',monospace; color:var(--muted);}
+
+  .timeline{display:grid; gap:0;}
+  .tl-item{
+    display:grid; grid-template-columns:150px 1fr; gap:24px;
+    padding:22px 0; border-top:1px solid var(--line);
+  }
+  .tl-item:first-child{border-top:none;}
+  .tl-date{font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--muted); padding-top:3px;}
+  .tl-role{font-size:15px; font-weight:700; font-family:'Sora',sans-serif; margin-bottom:3px;}
+  .tl-sub{font-size:12.5px; color:var(--muted); margin-bottom:9px;}
+  .tl-desc{font-size:13px; color:var(--ink-soft); line-height:1.6; max-width:64ch;}
+
+  /* ---------- projects ---------- */
+  .projects-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:22px;}
+  .project-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px; display:flex; flex-direction:column; box-shadow:var(--shadow);
+  }
+  .project-icon{
+    width:44px;height:44px;border-radius:10px;
+    background:var(--accent-soft); color:var(--accent);
+    display:flex;align-items:center;justify-content:center; margin-bottom:16px;
+  }
+  .project-card h3{font-size:16px; margin-bottom:10px; line-height:1.3;}
+  .project-card p{font-size:13.2px; color:var(--ink-soft); line-height:1.6; margin:0 0 16px; flex:1;}
+  .project-tags{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px;}
+  .project-tags span{
+    font-family:'JetBrains Mono',monospace; font-size:10.5px; padding:4px 8px; border-radius:5px;
+    background:var(--paper); border:1px solid var(--line); color:var(--muted);
+  }
+  .project-link{font-size:12.5px; font-weight:600; color:var(--accent); text-decoration:none; display:inline-flex; align-items:center; gap:5px;}
+
+  /* ---------- education ---------- */
+  .edu-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+  .edu-card{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:24px;}
+  .edu-card .date{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--accent); margin:2px 0 12px; display:block;}
+  .edu-card h3{font-size:15.5px; margin-bottom:4px;}
+  .edu-card .place{font-size:12.5px; color:var(--muted); margin-bottom:0;}
+  .edu-card p{font-size:13px; color:var(--ink-soft); line-height:1.6; margin:0;}
+
+  /* ---------- contact ---------- */
+  .contact-panel{
+    background:var(--ink); color:var(--paper); border-radius:20px;
+    padding:48px; display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center;
+  }
+  html.dark .contact-panel{background:var(--panel); border:1px solid var(--line);}
+  .contact-panel h2{color:#fff; font-size:26px; margin-bottom:10px;}
+  html.dark .contact-panel h2{color:var(--ink);}
+  .contact-panel p{color:#c6cde3; font-size:14px; line-height:1.6; max-width:44ch;}
+  html.dark .contact-panel p{color:var(--ink-soft);}
+  .contact-list{display:grid; gap:14px;}
+  .contact-row{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    background:rgba(255,255,255,0.06); border-radius:10px; padding:14px 16px;
+    text-decoration:none; color:#fff; font-size:13.5px;
+  }
+  html.dark .contact-row{background:var(--paper); color:var(--ink); border:1px solid var(--line);}
+  .contact-row span.k{font-family:'JetBrains Mono',monospace; font-size:11px; color:#9fb0d6;}
+  html.dark .contact-row span.k{color:var(--muted);}
+  .contact-row:hover{background:rgba(255,255,255,0.12);}
+  html.dark .contact-row:hover{background:var(--accent-soft);}
+
+  footer{padding:28px 0; text-align:center;}
+  footer p{font-size:12px; color:var(--muted); font-family:'JetBrains Mono',monospace;}
+
+
+  .quote-panel{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:40px 44px; box-shadow:var(--shadow); position:relative; max-width:820px;
+  }
+  .quote-panel .mark{
+    font-family:'Sora',sans-serif; font-size:56px; font-weight:800; color:var(--purple);
+    line-height:1; margin-bottom:4px; opacity:0.5;
+  }
+  .quote-panel blockquote{
+    margin:0 0 22px; font-family:'Sora',sans-serif; font-size:19px; font-weight:500;
+    line-height:1.55; color:var(--ink);
+  }
+  .quote-author{display:flex; align-items:center; gap:12px;}
+  .quote-author .name{font-size:13.5px; font-weight:700; color:var(--ink);}
+  .quote-author .role{font-size:12px; color:var(--muted);}
+  .quote-author a{color:var(--accent); text-decoration:none; font-weight:600;}
+  .quote-author a:hover{text-decoration:underline;}
+
+
+  .logo-badge{
+    position:relative; width:42px; height:42px; border-radius:10px;
+    background:#fff; border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono',monospace; font-size:9.5px; font-weight:700;
+    color:var(--muted); overflow:hidden; flex-shrink:0; letter-spacing:0.2px;
+  }
+  .logo-badge img{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:contain; background:#fff; padding:5px;
+  }
+  .exp-header-row{display:flex; align-items:flex-start; gap:14px; margin-bottom:6px;}
+  .exp-header-row > div:last-child{flex:1; min-width:0;}
+  .exp-header-row .exp-top{margin-bottom:2px;}
+  .tl-header-row{display:flex; align-items:center; gap:12px; margin-bottom:9px;}
+  .edu-card .edu-head{display:flex; align-items:flex-start; gap:12px; margin-bottom:4px;}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr; text-align:center;}
+    .hero p.lede{margin-left:auto; margin-right:auto;}
+    .hero-actions, .socials, .hero .avail{justify-content:center;}
+    .hero-photo{order:-1;}
+    .skill-groups{grid-template-columns:1fr;}
+    .projects-grid{grid-template-columns:1fr;}
+    .edu-grid{grid-template-columns:1fr;}
+    .tl-item{grid-template-columns:1fr; gap:6px;}
+    .contact-panel{grid-template-columns:1fr; padding:32px 24px;}
+    nav.links{display:none;}
+    .menu-toggle{display:flex;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#home" class="logo"><span class="mark"><img src="photo.jpg" alt="BB" onerror="this.style.display='none'"></span> Baptiste Blet</a>
+    <nav class="links" id="navLinks">
+      <a href="#skills" data-i18n="nav_skills">Compétences</a>
+      <a href="#experience" data-i18n="nav_experience">Expériences</a>
+      <a href="#education" data-i18n="nav_education">Éducation</a>
+      <a href="#recommendation" data-i18n="nav_recommendation">Recommandation</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="theme-btn lang-btn" id="langToggle" aria-label="Switch language / Changer de langue">FR</button>
+      <button class="theme-btn" id="themeToggle" aria-label="Changer de thème">
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a class="btn btn-primary nav-cv-btn" href="CV_Baptiste_BLET.html" target="_blank" rel="noopener" data-i18n="nav_cv">CV</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="chip chip-1">TICKET #000</span> <span data-i18n="hero_eyebrow">PROFIL</span></div>
+      <h1>Baptiste Blet</h1>
+      <div class="role" data-i18n="hero_role">// Product Owner &amp; Chef de Projet Digital</div>
+      <p class="lede" data-i18n="hero_lede">
+        Ingénieur informatique fraîchement diplômé du CESI, avec 6 mois d'expérience comme
+        Product Owner dans une startup HR Tech en forte croissance. J'y ai piloté en autonomie
+        le cycle de développement produit et arbitré les priorités entre équipes technique et
+        métiers. Ma double compétence, technique et fonctionnelle, me permet de faire le lien
+        entre besoins utilisateurs et objectifs business.
+      </p>
+      <!-- <div class="avail"><span class="dot unavailable"></span> <span class="avail-label" data-i18n="hero_unavail_label">Indisponible</span><span data-i18n="hero_avail_rest">· Mobilité France &amp; international</span></div> -->
+      <div class="avail"><span class="dot"></span> <span class="avail-label" data-i18n="hero_avail_label">Disponible immédiatement</span><span data-i18n="hero_avail_rest">· Mobilité France &amp; international</span></div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact" data-i18n="hero_btn_contact">Me contacter</a>
+        <a class="btn btn-ghost" href="CV_Baptiste_BLET.html" target="_blank" rel="noopener" data-i18n="hero_btn_cv">Télécharger mon CV</a>
+      </div>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/baptisteblet/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </a>
+        <button type="button" class="copy-btn-icon" data-copy="baptiste.blet@viacesi.fr" aria-label="Copier l'email">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="frame"><img src="photo.jpg" alt="Baptiste Blet" onerror="this.style.display='none'"></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="chip chip-1">TICKET #001</span> <span data-i18n="skills_eyebrow">COMPÉTENCES</span></div>
+      <h2 data-i18n="skills_h2">Ce que j'apporte à une équipe produit</h2>
+      <p data-i18n="skills_intro">Une double lecture, technique et fonctionnelle, pour transformer un besoin flou en spécification actionnable.</p>
+    </div>
+    <div class="skill-groups">
+      <div class="skill-card">
+        <h3><span class="sw"></span><span data-i18n="skills_g1_title">Gestion de produit &amp; projet</span></h3>
+        <div class="tag-cloud">
+          <span data-i18n="tag_backlog">Priorisation backlog</span>
+          <span data-i18n="tag_specs">Rédaction de specs</span>
+          <span data-i18n="tag_agile">Méthode Agile</span>
+          <span data-i18n="tag_qa">Assurance Qualité</span>
+          <span data-i18n="tag_userstory">User story</span>
+          <span data-i18n="tag_budget">Gestion budget/planning</span>
+          <span data-i18n="tag_roadmap">Suivi de roadmap</span>
+          <span data-i18n="tag_rituals">Animation de rituels</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3><span class="sw"></span><span data-i18n="skills_g2_title">Outils</span></h3>
+        <div class="tag-cloud">
+          <span>Notion</span>
+          <span>Jira</span>
+          <span>Slack</span>
+          <span>Figma</span>
+          <span>Google Suite</span>
+          <span>Office 365</span>
+          <span>Git / GitHub</span>
+          <span>VScode</span>
+          <span>Adobe</span>
+          <span data-i18n="tag_ai">Assistance via IA</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3><span class="sw"></span><span data-i18n="skills_g3_title">Technique</span></h3>
+        <div class="tag-cloud">
+          <span>HTML/CSS/JS</span>
+          <span>React / Next.js</span>
+          <span>Node.js / Python / PHP</span>
+          <span>SQL / MongoDB</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="softskills">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="chip chip-2">TICKET #002</span> SOFT SKILLS</div>
+      <h2 data-i18n="soft_h2">Comment je travaille</h2>
+      <p data-i18n="soft_intro">Des compétences transversales développées au fil de mes stages et de mes projets, en école et en startup.</p>
+    </div>
+    <div class="skill-card softskills" style="max-width:720px;">
+      <div class="tag-cloud">
+        <span data-i18n="ss_team">Esprit d'équipe</span>
+        <span>Communication</span>
+        <span data-i18n="ss_autonomy">Autonomie</span>
+        <span data-i18n="ss_priorities">Sens des priorités</span>
+        <span data-i18n="ss_adapt">Adaptabilité</span>
+        <span data-i18n="ss_listening">Écoute active</span>
+        <span data-i18n="ss_devoted">Dévoué</span>
+        <span data-i18n="ss_responsible">Responsable</span>
+        <span data-i18n="ss_rigor">Rigueur</span>
+        <span data-i18n="ss_organisation">Organisation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="chip chip-3">TICKET #003</span> <span data-i18n="exp_eyebrow">EXPÉRIENCES</span></div>
+      <h2 data-i18n="exp_h2">Parcours professionnel</h2>
+      <p data-i18n="exp_intro">Six mois en autonomie forte comme Product Owner, précédés de stages techniques qui nourrissent ma vision produit.</p>
+    </div>
+
+    <div class="featured-exp">
+      <div class="exp-header-row">
+        <a class="logo-badge" href="https://www.tool4staffing.com/" target="_blank" rel="noopener">T4S<img src="logo-tool4staffing.png" alt="" onerror="this.style.display='none'"></a>
+        <div>
+          <div class="exp-top">
+            <span class="role">Product Owner</span>
+            <span class="date mono" data-i18n="date_t4s">FÉV. 2026 → JUIL. 2026</span>
+          </div>
+          <div class="exp-sub" data-i18n="t4s_sub">Tool4Staffing - Barcelone, Espagne</div>
+        </div>
+      </div>
+      <p class="exp-context" data-i18n="t4s_context">
+        Startup HR Tech (~22 collaborateurs, 200+ clients) éditrice d'une solution hybride
+        ATS + CRM boostée à l'IA. Autonomie rapide suite au départ de la Product Owner
+        titulaire, en lien direct avec le COO.
+      </p>
+      <ul class="exp-list">
+        <li data-i18n="t4s_li1"><strong>Pilotage produit</strong> en mode "sprint continu" : priorisation du backlog, rédaction des attendus sur chaque ticket et arbitrage des développements avec une équipe de 4 développeurs.</li>
+        <li data-i18n="t4s_li2"><strong>Assurance Qualité</strong> de chaque fonctionnalité avant le déploiement hebdomadaire.</li>
+        <li data-i18n="t4s_li3"><strong>Animation des rituels produit</strong> : Daily, Weekly, Product Party, Release Notes.</li>
+        <li data-i18n="t4s_li4"><strong>Refonte du suivi produit sur Notion</strong>, améliorant la visibilité des équipes et permettant l'arrêt de Jira (réduction des coûts logiciels).</li>
+        <li data-i18n="t4s_li5"><strong>Pilotage d'un projet d'intégration partenaire</strong> (Performanse) : cadrage, PMP, budget, parties prenantes.</li>
+      </ul>
+      <div class="exp-stack mono"><span data-i18n="tools_label">OUTILS</span> · Notion · Slack · Google Sheets</div>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date mono" data-i18n="date_ludovika">SEPT. 2024<br>→ JANV. 2025</div>
+        <div>
+          <div class="tl-header-row">
+            <a class="logo-badge" href="https://ludovika-campus.uni-nke.hu/" target="_blank" rel="noopener">LU<img src="logo-ludovika.png" alt="" onerror="this.style.display='none'"></a>
+            <div>
+              <div class="tl-role" data-i18n="ludovika_role">Assistant chercheur - Cybercriminalité</div>
+              <div class="tl-sub" data-i18n="ludovika_sub">Ludovika University - Budapest, Hongrie</div>
+            </div>
+          </div>
+          <p class="tl-desc" data-i18n="ludovika_desc">Mise en place d'un mini-lab d'accès sécurisé au Darknet et exploration qualitative des contenus. Implémentation de techniques de web scraping, nettoyage et analyse des données collectées.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date mono" data-i18n="date_ackwa">DÉC. 2023<br>→ MARS 2024</div>
+        <div>
+          <div class="tl-header-row">
+            <a class="logo-badge" href="https://www.ackwa.fr/" target="_blank" rel="noopener">AK<img src="logo-ackwa.png" alt="" onerror="this.style.display='none'"></a>
+            <div>
+              <div class="tl-role" data-i18n="ackwa_role">Stage développement &amp; analyse web</div>
+              <div class="tl-sub" data-i18n="ackwa_sub">Ackwa - Tours, France</div>
+            </div>
+          </div>
+          <p class="tl-desc" data-i18n="ackwa_desc">Recueil des besoins internes et priorisation des fonctionnalités pour un dashboard de visualisation des coûts du parc cloud OVH, avec indicateurs d'optimisation automatiques.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date mono" data-i18n="date_axians">AVR. 2022<br>→ JUIL. 2022</div>
+        <div>
+          <div class="tl-header-row">
+            <a class="logo-badge" href="https://www.axians.com/" target="_blank" rel="noopener">AX<img src="logo-axians.png" alt="" onerror="this.style.display='none'"></a>
+            <div>
+              <div class="tl-role" data-i18n="axians_role">Stage technicien réseau</div>
+              <div class="tl-sub" data-i18n="axians_sub">Axians - Tours, France</div>
+            </div>
+          </div>
+          <p class="tl-desc" data-i18n="axians_desc">Déploiement d'un parc de switchs Aruba en milieu hospitalier et étude de configuration d'une borne Wi-Fi. Migration de domaine et d'utilisateurs Active Directory.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="chip chip-gray">TICKET #004</span> <span data-i18n="edu_eyebrow">ÉDUCATION</span></div>
+      <h2 data-i18n="edu_h2">Parcours académique</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-head">
+          <a class="logo-badge" href="https://www.cesi.fr/domaines/informatique-numerique/" target="_blank" rel="noopener">CESI<img src="logo-cesi.png" alt="" onerror="this.style.display='none'"></a>
+          <div>
+            <h3 data-i18n="edu1_title">Diplôme d'Ingénieur Informatique</h3>
+            <div class="place" data-i18n="edu_place">CESI École d'ingénieurs - La Rochelle, France</div>
+          </div>
+        </div>
+        <span class="date mono" data-i18n="date_edu1">SEPT. 2023 → JUIL. 2026</span>
+        <p data-i18n="edu1_desc">Spécialisation en développement web avancé, management d'équipe et de projet, cybersécurité et Big Data.</p>
+      </div>
+      <div class="edu-card">
+        <div class="edu-head">
+          <a class="logo-badge" href="https://www.cesi.fr/domaines/informatique-numerique/" target="_blank" rel="noopener">CESI<img src="logo-cesi.png" alt="" onerror="this.style.display='none'"></a>
+          <div>
+            <h3 data-i18n="edu2_title">Classe préparatoire intégrée</h3>
+            <div class="place" data-i18n="edu_place">CESI École d'ingénieurs - La Rochelle, France</div>
+          </div>
+        </div>
+        <span class="date mono" data-i18n="date_edu2">SEPT. 2021 → JUIN 2023</span>
+        <p data-i18n="edu2_desc">Développement web, réseaux &amp; administration des systèmes, programmation orientée objet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="recommendation" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="chip chip-5">TICKET #005</span> <span data-i18n="reco_eyebrow">RECOMMANDATION</span></div>
+      <h2 data-i18n="reco_h2">Ce qu'en dit mon tuteur de stage</h2>
+    </div>
+    <div class="quote-panel">
+      <div class="mark">"</div>
+      <blockquote data-i18n="reco_quote">
+        Baptiste s'est particulièrement distingué par sa capacité à structurer les feedbacks
+        utilisateurs et à maintenir une roadmap claire et pertinente. Doté d'une forte culture
+        technique et d'un véritable esprit d'initiative, il ne s'est pas contenté d'exécuter mais
+        a été une réelle force de proposition. Je le recommande chaleureusement en tant que
+        Product Owner ou Product Manager.
+      </blockquote>
+      <div class="quote-author">
+        <div>
+          <div class="name">Thomas Pruvost</div>
+          <div class="role"><span data-i18n="reco_role">COO chez Tool4Staffing</span> · <a href="https://www.linkedin.com/in/thomas-pruvost-40316151" target="_blank" rel="noopener">LinkedIn</a></div>
+        </div>
+      </div>
+      <a class="btn btn-ghost" style="margin-top:20px;" href="recommandation-thomas-pruvost.html" target="_blank" rel="noopener" data-i18n="reco_btn">Lire la lettre complète →</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-panel">
+      <div>
+        <div class="eyebrow"><span class="chip chip-1">TICKET #006</span> <span data-i18n="contact_eyebrow">CONTACT</span></div>
+        <h2 data-i18n="contact_h2">Parlons de votre besoin</h2>
+        <p data-i18n="contact_intro">Disponible immédiatement pour un poste de Product Owner ou Chef de Projet, en France ou à l'international.</p>
+      </div>
+      <div class="contact-list">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <a class="contact-row" style="flex:1;" href="mailto:baptiste.blet@viacesi.fr"><span><span class="k" data-i18n="k_email">EMAIL</span><br>baptiste.blet@viacesi.fr</span> →</a>
+          <button type="button" class="copy-row-btn" data-copy="baptiste.blet@viacesi.fr" aria-label="Copier l'email">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </button>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <a class="contact-row" style="flex:1;" href="tel:+33688197556"><span><span class="k" data-i18n="k_phone">TÉLÉPHONE</span><br>+33 6 88 19 75 56</span> →</a>
+          <button type="button" class="copy-row-btn" data-copy="+33688197556" aria-label="Copier le numéro">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </button>
+        </div>
+        <a class="contact-row" href="https://www.linkedin.com/in/baptisteblet/" target="_blank" rel="noopener"><span><span class="k">LINKEDIN</span><br>linkedin.com/in/baptisteblet</span> →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p data-i18n="footer_text">© 2026 Baptiste Blet - Product Owner &amp; Chef de Projet Digital</p>
+</footer>
+
+<script>
+  // Force a real file download via fetch+blob (more reliable than the download attribute alone,
+  // especially when the file is opened directly rather than served from a proper host).
+  function forceDownload(evt, url, filename){
+    evt.preventDefault();
+    fetch(url)
+      .then(res => {
+        if(!res.ok) throw new Error('not found');
+        return res.blob();
+      })
+      .then(blob => {
+        const blobUrl = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = blobUrl;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(()=>URL.revokeObjectURL(blobUrl), 2000);
+      })
+      .catch(() => {
+        // Fallback: if the file can't be fetched (e.g. not yet added to the repo), just navigate to it.
+        window.location.href = url;
+      });
+    return false;
+  }
+</script>
+
+<script>
+  // Theme toggle
+  // ---------- i18n (FR/EN) ----------
+  const I18N = {"fr": {"nav_skills": "Compétences", "nav_experience": "Expériences", "nav_education": "Éducation", "nav_recommendation": "Recommandation", "nav_contact": "Contact", "nav_cv": "CV", "hero_eyebrow": "PROFIL", "hero_role": "// Product Owner &amp; Chef de Projet Digital", "hero_lede": "Ingénieur informatique fraîchement diplômé du CESI, avec 6 mois d'expérience comme Product Owner dans une startup HR Tech en forte croissance. J'y ai piloté en autonomie le cycle de développement produit et arbitré les priorités entre équipes technique et métiers. Ma double compétence, technique et fonctionnelle, me permet de faire le lien entre besoins utilisateurs et objectifs business.", "hero_avail_label": "Disponible immédiatement", "hero_unavail_label":"Indisponible", "hero_avail_rest": "· Mobilité France &amp; international", "hero_btn_contact": "Me contacter", "hero_btn_cv": "Télécharger mon CV", "skills_eyebrow": "COMPÉTENCES", "skills_h2": "Ce que j'apporte à une équipe produit", "skills_intro": "Une double lecture, technique et fonctionnelle, pour transformer un besoin flou en spécification actionnable.", "skills_g1_title": "Gestion de produit &amp; projet", "skills_g2_title": "Outils", "skills_g3_title": "Technique", "tag_backlog": "Priorisation backlog", "tag_specs": "Rédaction de specs", "tag_agile": "Méthode Agile", "tag_qa": "Assurance Qualité", "tag_userstory": "User story", "tag_budget": "Gestion budget/planning", "tag_roadmap": "Suivi de roadmap", "tag_rituals": "Animation de rituels", "tag_ai": "Assistance via IA", "soft_h2": "Comment je travaille", "soft_intro": "Des compétences transversales développées au fil de mes stages et de mes projets, en école et en startup.", "ss_team": "Esprit d'équipe", "ss_autonomy": "Autonomie", "ss_priorities": "Sens des priorités", "ss_adapt": "Adaptabilité", "ss_listening": "Écoute active", "ss_devoted": "Dévoué", "ss_responsible": "Responsable", "ss_rigor": "Rigueur", "ss_organisation": "Organisation", "exp_eyebrow": "EXPÉRIENCES", "exp_h2": "Parcours professionnel", "exp_intro": "Six mois en autonomie forte comme Product Owner, précédés de stages techniques qui nourrissent ma vision produit.", "date_t4s": "FÉV. 2026 → JUIL. 2026", "t4s_sub": "Tool4Staffing - Barcelone, Espagne", "t4s_context": "Startup HR Tech (~22 collaborateurs, 200+ clients) éditrice d'une solution hybride ATS + CRM boostée à l'IA. Autonomie rapide suite au départ de la Product Owner titulaire, en lien direct avec le COO.", "t4s_li1": "<strong>Pilotage produit</strong> en mode \"sprint continu\" : priorisation du backlog, rédaction des attendus sur chaque ticket et arbitrage des développements avec une équipe de 4 développeurs.", "t4s_li2": "<strong>Assurance Qualité</strong> de chaque fonctionnalité avant le déploiement hebdomadaire.", "t4s_li3": "<strong>Animation des rituels produit</strong> : Daily, Weekly, Product Party, Release Notes.", "t4s_li4": "<strong>Refonte du suivi produit sur Notion</strong>, améliorant la visibilité des équipes et permettant l'arrêt de Jira (réduction des coûts logiciels).", "t4s_li5": "<strong>Pilotage d'un projet d'intégration partenaire</strong> (Performanse) : cadrage, PMP, budget, parties prenantes.", "tools_label": "OUTILS", "date_ludovika": "SEPT. 2024<br>→ JANV. 2025", "ludovika_role": "Assistant chercheur - Cybercriminalité", "ludovika_sub": "Ludovika University - Budapest, Hongrie", "ludovika_desc": "Mise en place d'un mini-lab d'accès sécurisé au Darknet et exploration qualitative des contenus. Implémentation de techniques de web scraping, nettoyage et analyse des données collectées.", "date_ackwa": "DÉC. 2023<br>→ MARS 2024", "ackwa_role": "Stage développement &amp; analyse web", "ackwa_sub": "Ackwa - Tours, France", "ackwa_desc": "Recueil des besoins internes et priorisation des fonctionnalités pour un dashboard de visualisation des coûts du parc cloud OVH, avec indicateurs d'optimisation automatiques.", "date_axians": "AVR. 2022<br>→ JUIL. 2022", "axians_role": "Stage technicien réseau", "axians_sub": "Axians - Tours, France", "axians_desc": "Déploiement d'un parc de switchs Aruba en milieu hospitalier et étude de configuration d'une borne Wi-Fi. Migration de domaine et d'utilisateurs Active Directory.", "edu_eyebrow": "ÉDUCATION", "edu_h2": "Parcours académique", "edu1_title": "Diplôme d'Ingénieur Informatique", "edu_place": "CESI École d'ingénieurs - La Rochelle, France", "date_edu1": "SEPT. 2023 → JUIL. 2026", "edu1_desc": "Spécialisation en développement web avancé, management d'équipe et de projet, cybersécurité et Big Data.", "edu2_title": "Classe préparatoire intégrée", "date_edu2": "SEPT. 2021 → JUIN 2023", "edu2_desc": "Développement web, réseaux &amp; administration des systèmes, programmation orientée objet.", "reco_eyebrow": "RECOMMANDATION", "reco_h2": "Ce qu'en dit mon tuteur de stage", "reco_quote": "Baptiste s'est particulièrement distingué par sa capacité à structurer les feedbacks utilisateurs et à maintenir une roadmap claire et pertinente. Doté d'une forte culture technique et d'un véritable esprit d'initiative, il ne s'est pas contenté d'exécuter mais a été une réelle force de proposition. Je le recommande chaleureusement en tant que Product Owner ou Product Manager.", "reco_role": "COO chez Tool4Staffing", "reco_btn": "Lire la lettre complète →", "contact_eyebrow": "CONTACT", "contact_h2": "Parlons de votre besoin", "contact_intro": "Disponible immédiatement pour un poste de Product Owner ou Chef de Projet, en France ou à l'international.", "k_email": "EMAIL", "k_phone": "TÉLÉPHONE", "footer_text": "© 2026 Baptiste Blet - Product Owner &amp; Chef de Projet Digital"}, "en": {"nav_skills": "Skills", "nav_experience": "Experience", "nav_education": "Education", "nav_recommendation": "Recommendation", "nav_contact": "Contact", "nav_cv": "Resume", "hero_eyebrow": "PROFILE", "hero_role": "// Product Owner &amp; Digital Project Manager", "hero_lede": "Computer engineer, fresh graduate from CESI, with 6 months of experience as a Product Owner in a fast-growing HR Tech startup. I independently drove the product development cycle and arbitrated priorities between technical and business teams. My dual skill set, technical and functional, lets me bridge user needs and business goals.", "hero_avail_label": "Available immediately", "hero_unavail_label":"Unavailable", "hero_avail_rest": "· Open to relocate in France &amp; abroad", "hero_btn_contact": "Get in touch", "hero_btn_cv": "Download my resume", "skills_eyebrow": "SKILLS", "skills_h2": "What I bring to a product team", "skills_intro": "A dual perspective, technical and functional, to turn a vague need into an actionable specification.", "skills_g1_title": "Product &amp; project management", "skills_g2_title": "Tools", "skills_g3_title": "Technical", "tag_backlog": "Backlog prioritization", "tag_specs": "Spec writing", "tag_agile": "Agile methodology", "tag_qa": "Quality assurance", "tag_userstory": "User story", "tag_budget": "Budget/planning management", "tag_roadmap": "Roadmap tracking", "tag_rituals": "Ritual facilitation", "tag_ai": "AI assistance", "soft_h2": "How I work", "soft_intro": "Cross-functional skills developed throughout my internships and projects, in school and in a startup.", "ss_team": "Team spirit", "ss_autonomy": "Autonomy", "ss_priorities": "Sense of priorities", "ss_adapt": "Adaptability", "ss_listening": "Active listening", "ss_devoted": "Dedicated", "ss_responsible": "Responsible", "ss_rigor": "Rigor", "ss_organisation": "Organization", "exp_eyebrow": "EXPERIENCE", "exp_h2": "Professional background", "exp_intro": "Six months of strong autonomy as a Product Owner, preceded by technical internships that shape my product vision.", "date_t4s": "FEB. 2026 → JUL. 2026", "t4s_sub": "Tool4Staffing - Barcelona, Spain", "t4s_context": "HR Tech startup (~22 employees, 200+ clients) building a hybrid AI-powered ATS + CRM solution. Rapidly stepped into autonomy after the departure of the incumbent Product Owner, working directly with the COO.", "t4s_li1": "<strong>Product management</strong> in a \"continuous sprint\" model: backlog prioritization, writing dev expectations on every ticket, and arbitrating development work with a team of 4 developers.", "t4s_li2": "<strong>Quality assurance</strong> on every feature before the weekly release.", "t4s_li3": "<strong>Facilitating product rituals</strong>: Daily, Weekly, Product Party, Release Notes.", "t4s_li4": "<strong>Overhauled product tracking on Notion</strong>, improving visibility across teams and enabling the team to drop Jira (software cost savings).", "t4s_li5": "<strong>Led a partner integration project</strong> (Performanse): scoping, PMP, budget, stakeholder management.", "tools_label": "TOOLS", "date_ludovika": "SEPT. 2024<br>→ JAN. 2025", "ludovika_role": "Research Assistant - Cybercrime", "ludovika_sub": "Ludovika University - Budapest, Hungary", "ludovika_desc": "Set up a secure mini-lab for Darknet access and conducted qualitative exploration of its content. Implemented web scraping techniques, and cleaned and analyzed the collected data.", "date_ackwa": "DEC. 2023<br>→ MAR. 2024", "ackwa_role": "Web Development &amp; Analysis Internship", "ackwa_sub": "Ackwa - Tours, France", "ackwa_desc": "Gathered internal requirements and prioritized features for a dashboard visualizing OVH cloud infrastructure costs, with automated optimization indicators.", "date_axians": "APR. 2022<br>→ JUL. 2022", "axians_role": "Network Technician Internship", "axians_sub": "Axians - Tours, France", "axians_desc": "Deployed a fleet of Aruba switches in a hospital environment and studied the configuration of a Wi-Fi access point. Migrated domain and Active Directory users.", "edu_eyebrow": "EDUCATION", "edu_h2": "Academic background", "edu1_title": "Master's Degree in Computer Engineering", "edu_place": "CESI Graduate School of Engineering - La Rochelle, France", "date_edu1": "SEPT. 2023 → JUL. 2026", "edu1_desc": "Specialization in advanced web development, team &amp; project management, cybersecurity and Big Data.", "edu2_title": "Integrated preparatory classes", "date_edu2": "SEPT. 2021 → JUN 2023", "edu2_desc": "Web development, networks &amp; systems administration, object-oriented programming.", "reco_eyebrow": "RECOMMENDATION", "reco_h2": "What my internship supervisor says", "reco_quote": "Baptiste particularly stood out for his ability to structure user feedback and maintain a clear, relevant roadmap. With a strong technical background and a genuine sense of initiative, he didn't just execute tasks, he was a real driving force behind proposals. I warmly recommend him as a Product Owner or Product Manager.", "reco_role": "COO at Tool4Staffing", "reco_btn": "Read the full letter →", "contact_eyebrow": "CONTACT", "contact_h2": "Let's talk about your needs", "contact_intro": "Available immediately for a Product Owner or Project Manager role, in France or abroad.", "k_email": "EMAIL", "k_phone": "PHONE", "footer_text": "© 2026 Baptiste Blet - Product Owner &amp; Digital Project Manager"}};
+  const langBtn = document.getElementById('langToggle');
+  function applyLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if(I18N[lang] && I18N[lang][key] !== undefined){
+        el.innerHTML = I18N[lang][key];
+      }
+    });
+    langBtn.textContent = lang === 'fr' ? 'EN' : 'FR';
+  }
+  const savedLang = localStorage.getItem('bb-lang') || 'fr';
+  applyLang(savedLang);
+  langBtn.addEventListener('click', () => {
+    const current = document.documentElement.lang === 'en' ? 'en' : 'fr';
+    const next = current === 'fr' ? 'en' : 'fr';
+    localStorage.setItem('bb-lang', next);
+    applyLang(next);
+  });
+
+  const root = document.documentElement;
+  const themeBtn = document.getElementById('themeToggle');
+  const iconMoon = document.getElementById('iconMoon');
+  function applyTheme(t){
+    if(t === 'dark'){ root.classList.add('dark'); iconMoon.innerHTML = '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/>'; }
+    else { root.classList.remove('dark'); iconMoon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>'; }
+  }
+  const saved = localStorage.getItem('bb-theme') || 'light';
+  applyTheme(saved);
+  themeBtn.addEventListener('click', () => {
+    const next = root.classList.contains('dark') ? 'light' : 'dark';
+    localStorage.setItem('bb-theme', next);
+    applyTheme(next);
+  });
+
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navA = document.querySelectorAll('nav.links a');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        navA.forEach(a=>a.classList.remove('active'));
+        const link = document.querySelector(`nav.links a[href="#${e.target.id}"]`);
+        if(link) link.classList.add('active');
+      }
+    });
+  }, {rootMargin:'-40% 0px -50% 0px'});
+  sections.forEach(s=>obs.observe(s));
+
+  // Copy-to-clipboard buttons
+  function flashFeedback(el, text){
+    const fb = document.createElement('span');
+    fb.className = 'copy-feedback show';
+    fb.textContent = text;
+    el.style.position = el.style.position || 'relative';
+    el.appendChild(fb);
+    setTimeout(()=>fb.remove(), 1400);
+  }
+  const checkIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>';
+  document.querySelectorAll('.copy-btn-icon, .copy-row-btn').forEach(btn=>{
+    const originalIcon = btn.innerHTML;
+    btn.addEventListener('click', async ()=>{
+      const val = btn.getAttribute('data-copy');
+      try{
+        await navigator.clipboard.writeText(val);
+        btn.classList.add('copied');
+        btn.innerHTML = checkIcon;
+        flashFeedback(btn, document.documentElement.lang === 'en' ? 'Copied!' : 'Copié !');
+        setTimeout(()=>{
+          btn.classList.remove('copied');
+          btn.innerHTML = originalIcon;
+        }, 1500);
+      }catch(e){
+        flashFeedback(btn, document.documentElement.lang === 'en' ? 'Error' : 'Erreur');
+      }
+    });
+  });
+  // Show header bottom border once the page is scrolled
+  const navHeader = document.querySelector('header.nav');
+  function updateHeaderBorder(){
+    navHeader.classList.toggle('scrolled', window.scrollY > 8);
+  }
+  updateHeaderBorder();
+  window.addEventListener('scroll', updateHeaderBorder, { passive: true });
+</script>
+</body>
+</html>
