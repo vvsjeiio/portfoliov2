@@ -36,17 +36,14 @@
   }
   .back-link:hover{color:var(--accent);}
   .print-btn{
-    min-width: 125px;
     font-size:12.5px; font-weight:600; color:var(--ink-soft);
     border:1px solid var(--line); background:var(--panel);
     padding:8px 14px; border-radius:8px; cursor:pointer;
   }
-  .print-btn:hover, .lang-btn:hover{border-color:var(--accent); color:var(--accent);}
-  .lang-btn{
-    font-size:12.5px; font-weight:600; color:var(--ink-soft);
-    border:1px solid var(--line); background:var(--panel);
-    padding:8px 14px; border-radius:8px; cursor:pointer;
-  }
+  .print-btn{text-align:center; white-space:nowrap;}
+  #langToggle{width:48px; padding-left:0; padding-right:0;}
+  .print-btn:not(#langToggle){width:132px; padding-left:0; padding-right:0;}
+  .print-btn:hover{border-color:var(--accent); color:var(--accent);}
 
   .letter-wrap{max-width:760px; margin:24px auto 60px; padding:0 28px;}
   .letter{
@@ -74,11 +71,17 @@
   .signature .contacts a{color:var(--accent); text-decoration:none;}
   .signature .contacts a:hover{text-decoration:underline;}
 
+  @page{ size:A4; margin:12mm 15mm; }
   @media print{
-    body{background:#fff;}
+    body{background:#fff; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
     .topbar{display:none;}
     .letter{box-shadow:none; border:none; padding:0;}
     .letter-wrap{margin:0; padding:0; max-width:100%;}
+    .letterhead{padding-bottom:14px; margin-bottom:16px;}
+    .subject{margin-bottom:12px;}
+    .letter p{font-size:12.5px; line-height:1.55; margin:0 0 9px;}
+    .signature{margin-top:16px; font-size:12.5px; line-height:1.5;}
+    .signature .closing{margin-bottom:10px;}
   }
   @media (max-width:600px){
     .letter{padding:34px 24px;}
@@ -95,7 +98,7 @@
     <span data-i18n="back_link">Retour au portfolio</span>
   </a>
   <div style="display:flex; align-items:center; gap:8px;">
-    <button class="lang-btn" id="langToggle">EN</button>
+    <button class="print-btn" id="langToggle">EN</button>
     <button class="print-btn" onclick="window.print()" data-i18n="print_btn">Imprimer / PDF</button>
   </div>
 </div>
