@@ -11,7 +11,7 @@
   *{box-sizing:border-box;}
   @page{ size:A4; margin:0; }
   body{margin:0; background:#e9e9e9; color:var(--ink); font-family:'Inter',system-ui,-apple-system,sans-serif; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
-  .topbar{display:flex; align-items:center; justify-content:space-between; max-width:794px; margin:16px auto 0; padding:0 4px; font-family:'Inter',system-ui,sans-serif;}
+  .topbar{display:flex; align-items:center; justify-content:space-between; width:min(794px, calc(100% - 16px)); flex-wrap:wrap; gap:8px; margin:16px auto 0; padding:0; font-family:'Inter',system-ui,sans-serif;}
   .topbar a.back-link{display:inline-flex; align-items:center; gap:6px; font-size:13.5px; font-weight:600; color:#454b5f; text-decoration:none;}
   .topbar a.back-link:hover{color:#1f4e8c;}
   .topbar .btns{display:flex; align-items:center; gap:8px;}
@@ -21,7 +21,8 @@
   .topbar button#langToggle{width:48px; padding-left:0; padding-right:0;}
   .topbar button.print-btn:not(#langToggle){width:132px; padding-left:0; padding-right:0;}
   .topbar .print-btn:hover{border-color:#1f4e8c; color:#1f4e8c;}
-  .page{width:794px; min-height:1123px; margin:16px auto 24px; background:#fff; padding:32px 46px 28px; box-shadow:0 2px 12px rgba(0,0,0,.15); font-size:10.5px; line-height:1.38; color:var(--soft);}
+  .scaler{width:calc(794px * var(--s, 1)); margin:16px auto 24px;}
+  .page{width:794px; min-height:1123px; margin:0; transform:scale(var(--s, 1)); transform-origin:0 0; background:#fff; padding:32px 46px 28px; box-shadow:0 2px 12px rgba(0,0,0,.15); font-size:10.5px; line-height:1.38; color:var(--soft);}
   header{display:flex; justify-content:space-between; align-items:flex-start; gap:20px; padding-bottom:0;}
   header .name{font-family:'Sora',sans-serif; font-size:17px; font-weight:400; color:var(--ink); margin:0 0 5px; padding-top:10px;}
   header .role{font-family:'Sora',sans-serif; font-size:23px; font-weight:700; color:var(--ink); margin:0; line-height:1.15;}
@@ -47,6 +48,8 @@
   @media print{
     body{background:#fff;}
     .topbar{display:none;}
+    .scaler{width:auto !important; height:auto !important; margin:0 !important;}
+    .page{transform:none !important;}
     .page{margin:0; box-shadow:none; width:210mm; height:297mm; min-height:0; overflow:hidden;}
   }
 </style>
@@ -60,6 +63,7 @@
     <button class="print-btn" id="printBtn" onclick="window.print()" data-i18n="print_btn">Imprimer / PDF</button>
   </div>
 </div>
+<div class="scaler">
 <div class="page">
   <header>
     <div>
@@ -130,6 +134,8 @@
   </section>
   </div>
 </div>
+</div>
+</div>
 <script>
   const I18N = {"fr": {"back_link": "Retour au portfolio", "print_btn": "Imprimer / PDF", "switch_cv": "CV classique", "role": "Chef de projet / Product Owner", "h_profile": "Résumé du profil", "h_contact": "Contact", "h_exp": "Expériences professionnelles", "h_edu": "Parcours scolaire", "h_lang": "Niveau de langues", "h_skills": "Compétences", "h_refs": "Références", "h_accr": "Accréditations", "profile_p": "Ingénieur informatique diplômé du CESI, avec 6 mois d'expérience comme Product Owner dans une startup HR Tech en forte croissance. J'y ai piloté en autonomie le cycle de développement produit et arbitré les priorités entre équipes technique et métiers. Ma double compétence, technique et fonctionnelle, me permet de faire le lien entre besoins utilisateurs et objectifs business. Je recherche un poste de Product Owner ou de Chef de Projet.", "c_phone": "Téléphone", "c_mail": "Adresse email", "c_addr": "Adresse", "c_addr_v": "Vendôme, France", "c_nat": "Nationalité", "c_nat_v": "Française", "c_age": "Âge", "c_age_v": "23 ans", "c_lic": "Permis de conduire", "c_lic_v": "B", "c_avail": "Disponibilité", "c_avail_v": "Immédiate", "c_mob": "Mobilité", "c_mob_v": "France, Suisse", "d_t4s": "02/2026 - 07/2026", "r_t4s": "Stage Product Owner", "s_t4s": "Barcelone, Espagne", "t4s1": "Pilotage produit en mode \"sprint continu\" : priorisation du backlog, rédaction des attendus sur chaque ticket et arbitrage des développements avec une équipe de 4 développeurs.", "t4s2": "Assurance qualité de chaque fonctionnalité avant le déploiement hebdomadaire.", "t4s3": "Animation des rituels produit : Daily, Weekly, Product Party, Release Notes.", "t4s4": "Refonte du suivi produit sur Notion, améliorant la visibilité des équipes et permettant l'arrêt de Jira, d'où une réduction significative des coûts logiciels.", "t4s5": "Pilotage d'un projet d'intégration partenaire (Performanse) : cadrage, budget, parties prenantes.", "d_ludo": "09/2024 - 01/2025", "r_ludo": "Assistant chercheur - Cybercriminalité", "s_ludo": "Budapest, Hongrie", "ludo1": "Mise en place d'un mini-lab d'accès sécurisé au Darknet et exploration qualitative des contenus.", "ludo2": "Web scraping, nettoyage et analyse des données collectées.", "d_ackwa": "12/2023 - 03/2024", "r_ackwa": "Stage Développeur Web", "s_ackwa": "Tours, France", "ackwa1": "Développement d'un dashboard de visualisation des coûts du parc cloud OVH.", "ackwa2": "Recueil des besoins internes, priorisation des fonctionnalités et documentation.", "d_axians": "04/2022 - 07/2022", "r_axians": "Stage Technicien Réseau", "s_axians": "Tours, France", "axians1": "Déploiement d'un parc de switchs Aruba en milieu hospitalier ; migration de domaine et d'utilisateurs Active Directory.", "d_edu1": "09/2023 - 07/2026", "e_edu1": "Diplôme d'Ingénieur Informatique", "p_edu1": "CESI École d'ingénieurs, La Rochelle, France", "d_edu2": "09/2021 - 06/2023", "e_edu2": "Classe préparatoire intégrée", "p_edu2": "CESI École d'ingénieurs, La Rochelle, France", "l_fr": "Français", "v_fr": "Langue maternelle", "l_en": "Anglais", "v_en": "Courant (TOEIC 865/990)", "l_es": "Espagnol", "v_es": "Intermédiaire", "k_prod": "Gestion de produit", "k_prod_v": "Priorisation du backlog, user stories, suivi de roadmap, assurance qualité", "k_meth": "Méthodes", "k_meth_v": "Agile, Scrum, pilotage de projet", "k_tools": "Outils", "k_tools_v": "Notion, Jira, Trello, Slack, Office 365", "k_tech": "Technique", "k_tech_v": "HTML/CSS/JS, React, Node.js, SQL", "ref_role": "COO, Tool4Staffing (tuteur de stage)", "acc_t": "TOEIC (Test of English for International Communication)", "acc_d": "Score : 865/990"}, "en": {"back_link": "Back to portfolio", "print_btn": "Print / PDF", "switch_cv": "Classic CV", "role": "Project Manager / Product Owner", "h_profile": "Profile summary", "h_contact": "Contact", "h_exp": "Professional experience", "h_edu": "Education", "h_lang": "Languages", "h_skills": "Skills", "h_refs": "References", "h_accr": "Certifications", "profile_p": "Computer engineer, graduate of CESI, with 6 months of experience as a Product Owner in a fast-growing HR Tech startup. I independently drove the product development cycle and arbitrated priorities between technical and business teams. My dual skill set, technical and functional, lets me bridge user needs and business goals. I am looking for a Product Owner or Project Manager position.", "c_phone": "Phone", "c_mail": "Email", "c_addr": "Address", "c_addr_v": "Vendôme, France", "c_nat": "Nationality", "c_nat_v": "French", "c_age": "Age", "c_age_v": "23", "c_lic": "Driving licence", "c_lic_v": "B", "c_avail": "Availability", "c_avail_v": "Immediate", "c_mob": "Mobility", "c_mob_v": "France, Switzerland", "d_t4s": "02/2026 - 07/2026", "r_t4s": "Product Owner Internship", "s_t4s": "Barcelona, Spain", "t4s1": "Product management in a \"continuous sprint\" model: backlog prioritization, writing dev expectations on every ticket, and arbitrating development work with a team of 4 developers.", "t4s2": "Quality assurance on every feature before the weekly release.", "t4s3": "Facilitating product rituals: Daily, Weekly, Product Party, Release Notes.", "t4s4": "Overhauled product tracking on Notion, improving visibility across teams and enabling the team to drop Jira, resulting in significant software cost savings.", "t4s5": "Led a partner integration project (Performanse): scoping, budget, stakeholder management.", "d_ludo": "09/2024 - 01/2025", "r_ludo": "Research Assistant - Cybercrime", "s_ludo": "Budapest, Hungary", "ludo1": "Set up a secure mini-lab for Darknet access and conducted qualitative exploration of its content.", "ludo2": "Web scraping, cleaning and analysis of the collected data.", "d_ackwa": "12/2023 - 03/2024", "r_ackwa": "Web Developer Internship", "s_ackwa": "Tours, France", "ackwa1": "Built a dashboard visualizing OVH cloud infrastructure costs.", "ackwa2": "Gathered internal requirements, prioritized features and produced documentation.", "d_axians": "04/2022 - 07/2022", "r_axians": "Network Technician Internship", "s_axians": "Tours, France", "axians1": "Deployed a fleet of Aruba switches in a hospital environment; migrated domain and Active Directory users.", "d_edu1": "09/2023 - 07/2026", "e_edu1": "Master's Degree in Computer Engineering", "p_edu1": "CESI Graduate School of Engineering, La Rochelle, France", "d_edu2": "09/2021 - 06/2023", "e_edu2": "Integrated preparatory classes", "p_edu2": "CESI Graduate School of Engineering, La Rochelle, France", "l_fr": "French", "v_fr": "Native", "l_en": "English", "v_en": "Fluent (TOEIC 865/990)", "l_es": "Spanish", "v_es": "Intermediate", "k_prod": "Product management", "k_prod_v": "Backlog prioritization, user stories, roadmap tracking, quality assurance", "k_meth": "Methods", "k_meth_v": "Agile, Scrum, project management", "k_tools": "Tools", "k_tools_v": "Notion, Jira, Trello, Slack, Office 365", "k_tech": "Technical", "k_tech_v": "HTML/CSS/JS, React, Node.js, SQL", "ref_role": "COO, Tool4Staffing (internship supervisor)", "acc_t": "TOEIC (Test of English for International Communication)", "acc_d": "Score: 865/990"}};
   const btn = document.getElementById('langToggle');
@@ -150,6 +156,18 @@
     try { localStorage.setItem('bb-lang', next); } catch(e) {}
     applyLang(next);
   });
+  (function(){
+    const sc = document.querySelector('.scaler'), pg = sc.querySelector('.page');
+    function fit(){
+      const s = Math.min(1, (document.documentElement.clientWidth - 16) / 794);
+      sc.style.setProperty('--s', s);
+      sc.style.height = (pg.offsetHeight * s) + 'px';
+    }
+    fit();
+    window.addEventListener('resize', fit);
+    window.addEventListener('load', fit);
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  })();
 </script>
 </body>
 </html>
